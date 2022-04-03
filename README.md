@@ -8,4 +8,4 @@ https://rinkeby.etherscan.io/address/0x28e1e3f87222cce73b4668ddc6700946f05daf6d
 
 
 The link to the deployed surge application
-decorous-mint.surge.sh
+http://decorous-mint.surge.sh/
