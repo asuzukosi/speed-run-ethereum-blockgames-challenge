@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { utils } = require("ethers");
 const fs = require("fs");
 const chalk = require("chalk");
@@ -16,10 +15,16 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
 /*
       📡 This is where you configure your deploy configuration for 🏗 scaffold-eth
-      From here look at deploy/00_deploy_your_contract.js
+
+      check out `packages/scripts/deploy.js` to customize your deployment
+
+      out of the box it will auto deploy anything in the `contracts` folder and named *.sol
+      plus it will use *.args for constructor args
 */
 
+//
 // Select the network you want to deploy to here:
+//
 const defaultNetwork = "rinkeby";
 
 const mainnetGwei = 115;
@@ -40,12 +45,10 @@ function mnemonic() {
 module.exports = {
   defaultNetwork,
 
-  // if you want to deploy to a testnet, mainnet, or xdai, you will need to configure:
-  // 1. An Infura key (or similar)
-  // 2. A private key for the deployer
-  // DON'T PUSH THESE HERE!!!
-  // An `example.env` has been provided in the Hardhat root. Copy it and rename it `.env`
-  // Follow the directions, and uncomment the network you wish to deploy to.
+  // don't forget to set your provider like:
+  // REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
+  // (then your frontend will talk to your contracts on the live network!)
+  // (you will need to restart the `yarn run start` dev server after editing the .env)
 
   networks: {
     localhost: {
@@ -110,7 +113,6 @@ module.exports = {
         mnemonic: mnemonic(),
       },
     },
-
     matic: {
       url: "https://rpc-mainnet.maticvigil.com/",
       gasPrice: 1000000000,
@@ -233,7 +235,7 @@ module.exports = {
         },
       },
       {
-        version: "0.8.2",
+        version: "0.6.7",
         settings: {
           optimizer: {
             enabled: true,
@@ -244,7 +246,7 @@ module.exports = {
     ],
   },
   ovm: {
-    solcVersion: "0.8.2",
+    solcVersion: "0.7.6",
   },
   namedAccounts: {
     deployer: {
@@ -252,8 +254,8 @@ module.exports = {
     },
   },
   etherscan: {
-    // your api key here.
-    apiKey: "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8",
+    // Add your api key here
+    apiKey: "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW",
   },
 };
 
@@ -307,20 +309,20 @@ task("fundedwallet", "Create a wallet (pk) link and fund it with deployer?")
       deployerWallet = deployerWallet.connect(ethers.provider);
       console.log(
         "💵 Sending " +
-        amount +
-        " ETH to " +
-        randomWallet.address +
-        " using deployer account"
+          amount +
+          " ETH to " +
+          randomWallet.address +
+          " using deployer account"
       );
       const sendresult = await deployerWallet.sendTransaction(tx);
       console.log("\n" + url + "/pk#" + privateKey + "\n");
     } else {
       console.log(
         "💵 Sending " +
-        amount +
-        " ETH to " +
-        randomWallet.address +
-        " using local node"
+          amount +
+          " ETH to " +
+          randomWallet.address +
+          " using local node"
       );
       console.log("\n" + url + "/pk#" + privateKey + "\n");
       return send(ethers.provider.getSigner(), tx);
@@ -350,8 +352,8 @@ task(
       "0x" + EthUtil.privateToAddress(wallet._privKey).toString("hex");
     console.log(
       "🔐 Account Generated as " +
-      address +
-      " and set as mnemonic in packages/hardhat"
+        address +
+        " and set as mnemonic in packages/hardhat"
     );
     console.log(
       "💬 Use 'yarn run account' to get more information about the deployment account."
@@ -410,12 +412,12 @@ task(
 
     console.log(
       "⛏  Account Mined as " +
-      address +
-      " and set as mnemonic in packages/hardhat"
+        address +
+        " and set as mnemonic in packages/hardhat"
     );
     console.log(
       "📜 This will create the first contract: " +
-      chalk.magenta("0x" + contract_address)
+        chalk.magenta("0x" + contract_address)
     );
     console.log(
       "💬 Use 'yarn run account' to get more information about the deployment account."

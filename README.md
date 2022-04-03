@@ -1,11 +1,12 @@
-This is challenge 0 of the speed run ethereum challenge set
-                                                    
-Deployer account for the contract is 
-0x28e1e3f87222cce73b4668ddc6700946f05daf6d
+This is challenge 1 of the speed ethereum challenge set, it is a challeng to build a staking applicaiton
 
-The contract deployment address is 
-https://rinkeby.etherscan.io/address/0x28e1e3f87222cce73b4668ddc6700946f05daf6d
+The generated address for deploying this contract is 
+0x5f57fb97149966b4e651acd5ebdd5a0b20180365
 
+The address of the contract is 
+https://rinkeby.etherscan.io/address/0x22783026d041E419775b117311959D8dF3EE131f
 
-The link to the deployed surge application
-decorous-mint.surge.sh
+The link the live applicaiton is 
+http://hilarious-circle.surge.sh/
+
+deployed on surge
