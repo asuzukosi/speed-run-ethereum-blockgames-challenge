@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@eth-optimism/hardhat-ovm": "^0.2.2",
-    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
     "@nomiclabs/hardhat-etherscan": "^2.1.7",
+    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
     "@nomiclabs/hardhat-waffle": "^2.0.0",
     "@openzeppelin/contracts": "^4.3.3",
     "@tenderly/hardhat-tenderly": "^1.0.10",
@@ -40,6 +40,6 @@
     "send": "hardhat send",
     "generate": "hardhat generate",
     "account": "hardhat account",
-    "verify": "hardhat etherscan-verify --api-key FHH4GFWI45SU846X5PR9PD35YEM7S18YD9"
+    "verify": "hardhat etherscan-verify --api-key 16DUDCWD65J7SEA12XGYYVGYXYJGVJK1BF"
   }
 }
